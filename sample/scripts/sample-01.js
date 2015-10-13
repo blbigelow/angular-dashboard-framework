@@ -24,7 +24,7 @@
 'use strict';
 
 angular.module('sample-01', ['adf', 'LocalStorageModule'])
-.controller('sample01Ctrl', function($scope, localStorageService){
+.controller('sample01Ctrl', function($rootScope, $scope, localStorageService){
 
   var name = 'sample-01';
   var model = localStorageService.get(name);
@@ -94,6 +94,10 @@ angular.module('sample-01', ['adf', 'LocalStorageModule'])
   $scope.model = model;
   $scope.collapsible = false;
   $scope.maximizable = false;
+
+  $scope.toggleEditMode = function() {
+      $rootScope.$broadcast('adfToggleEditMode', {});
+  };
 
   $scope.$on('adfDashboardChanged', function (event, name, model) {
     localStorageService.set(name, model);

@@ -158,7 +158,7 @@ gulp.task('dashboard-templates', function(){
 });
 
 gulp.task('copy-font', function(){
-  gulp.src('sample/components/bootstrap/dist/fonts/*')
+  gulp.src('sample/components/fontawesome/fonts/*')
       .pipe(gulp.dest('dist/sample/fonts'));
 });
 

@@ -1,17 +1,20 @@
-<h1>
-  {{model.title}}
-  <span style="font-size: 16px" class="pull-right">
+<h4 ng-if="editMode">
+    Edit Dashboard
+  <span class="pull-right">
+    <div class="btn-group">
+      <a href="" class="btn btn-default btn-sm" ng-class="{active: adfModel.structure == key}" ng-repeat="(key, struct) in structures" ng-click="changeStructure(key, struct)">
+          <img class="layout-img" ng-if="struct.icon" ng-src="{{struct.icon}}" alt="{{struct.icon}}" />
+          <span ng-if="!struct.icon">{{key}}</span>
+      </a>
+    </div>
     <a href="" ng-if="editMode" title="add new widget" ng-click="addWidgetDialog()">
-      <i class="glyphicon glyphicon-plus-sign"></i>
-    </a>
-    <a href="" ng-if="editMode" title="edit dashboard" ng-click="editDashboardDialog()">
-      <i class="glyphicon glyphicon-cog"></i>
+      <i class="fa fa-plus-circle"></i>
     </a>
     <a href="" ng-if="options.editable" title="{{editMode ? 'save changes' : 'enable edit mode'}}" ng-click="toggleEditMode()">
-      <i class="glyphicon" x-ng-class="{'glyphicon-edit' : !editMode, 'glyphicon-save' : editMode}"></i>
+      <i class="fa" x-ng-class="{'fa-edit' : !editMode, 'fa-save' : editMode}"></i>
     </a>
-    <a href="" ng-if="editMode" title="undo changes" ng-click="cancelEditMode()">
-      <i class="glyphicon glyphicon-repeat adf-flip"></i>
-    </a>
+    <!--<a href="" ng-if="editMode" title="undo changes" ng-click="cancelEditMode()">
+      <i class="fa fa-refresh adf-flip"></i>
+    </a>-->
   </span>
-</h1>
+</h4>
